@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reveal.js/dist/reveal.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='slideshow.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='reveal.js/plugin/highlight/zenburn.css') }}">
+    {{ meta | safe }}
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">{{ slideshow | safe }}</div>
+    </div>
+    <aside id="actions">
+      <ul>
+        <li id="home"><a title="Home Page" href="{{ url_for('index') }}">&lt;</a></li>
+        <li id="print"><a title="Print" href="{{ url_for('print_slideshow', name=name) }}">🖨</a></li>
+      </ul>
+    </aside>
+    <script type="application/javascript" src="{{ url_for('static', filename='reveal.js/dist/reveal.js') }}"></script>
+    <script type="application/javascript" src="{{ url_for('static', filename='reveal.js/plugin/highlight/highlight.js') }}"></script>
+    <script type="application/javascript" src="{{ url_for('static', filename='reveal.js/plugin/notes/notes.js') }}"></script>
+    <script>
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: true,
+        plugins: [ RevealHighlight, RevealNotes ],
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+.reveal-viewport {
+  background: transparent;
+}
+
+#actions ul {
+  display: flex;
+  left: 0;
+  list-style: none;
+  padding: 0.5em;
+  position: absolute;
+  top: 0;
+}
+
+#actions a {
+  color: inherit;
+  opacity: 0.1;
+  padding: 0.5em;
+  text-decoration: none;
+  transition: opacity 0.5s;
+}
+
+#actions a:hover,
+#actions a:focus {
+  opacity: 1;
+}
+
+.reveal .slide-number {
+  background: none;
+  bottom: auto;
+  color: #293462;
+  font-size: 1em;
+  font-weight: 500;
+  opacity: 0.5;
+  right: 1em;
+  text-align: center;
+  top: 1em;
+}
+
+.reveal .slide-number a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.reveal .controls {
+  opacity: 0.1;
+  transition: 1s;
+}
+
+.reveal .controls:hover {
+  opacity: 0.5;
+}
+
+@media weasyprint {
+  @page {
+    margin: 0;
+    size: 60cm 45cm;
+  }
+
+  .reveal .slides {
+    line-height: 45cm !important;
+    position: static !important;
+  }
+
+  .reveal .slides section {
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 40pt;
+    line-height: 1.2;
+    max-height: 45cm;
+    padding: 0 4cm;
+    position: static;
+    width: 100%;
+    vertical-align: middle;
+  }
+
+  .reveal .controls,
+  .reveal .slide-number,
+  #actions,
+  #viewerContainer {
+    display: none;
+  }
+}

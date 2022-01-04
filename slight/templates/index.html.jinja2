@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Slight</title>
+    <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    </head>
+  </head>
+
+  <body>
+    <h1>Slight</h1>
+
+    <ul id="slideshows">
+      {% for slideshow in (slideshows | sort) %}
+        <li>
+          <figure>
+            <iframe src="{{ url_for('slideshow', name=slideshow.name) }}" loading="lazy"></iframe>
+            <figcaption><a href="{{ url_for('slideshow', name=slideshow.name) }}">{{ slideshow.name }}</a></figcaption>
+          </figure>
+        </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
