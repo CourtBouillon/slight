@@ -92,6 +92,13 @@
   outline: 3px dashed #0003;
 }
 
+@media (max-width: 20em) {
+  .reveal ~ *,
+  .reveal .slides ~ * {
+    display: none !important;
+  }
+}
+
 @media weasyprint {
   @page {
     margin: 0;
