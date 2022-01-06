@@ -54,18 +54,18 @@ def add_slideshow():
         'add_slideshow.html.jinja2', themes=themes, folders=folders)
 
 
-@app.route('/slideshow/<name>/remove', methods=('get', 'post'))
-def remove_slideshow(name):
+@app.route('/slideshow/<name>/delete', methods=('get', 'post'))
+def delete_slideshow(name):
     for root in paths('slideshows'):
         if root.name != name:
             continue
         if request.method.lower() == 'post':
-            if request.form['action'].lower() == 'remove':
+            if request.form['action'].lower() == 'delete':
                 rmtree(root)
                 return redirect(url_for('index'))
             else:
                 return redirect(url_for('slideshow', name=name))
-        return render_template('remove_slideshow.html.jinja2', name=name)
+        return render_template('delete_slideshow.html.jinja2', name=name)
     return abort(404)
 
 

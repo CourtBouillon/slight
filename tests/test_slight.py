@@ -79,30 +79,44 @@ def test_pdf_404(test_app):
     assert test_app.get('/slideshow/slideshow-5.pdf').status_code == 404
 
 
-def test_add_remove(test_app):
+def test_add_delete(test_app):
     assert 'Add' in test_app.get('/slideshow/add').data.decode('utf8')
     data = {'name': 'name', 'folder': 0, 'theme': 0}
     post = test_app.post('/slideshow/add', data=data)
     assert post.status_code < 400
     assert 'name' in test_app.get('/slideshow/name/').data.decode('utf8')
-    assert 'Remove' in test_app.get(
-        '/slideshow/name/remove').data.decode('utf8')
-    data = {'action': 'Remove'}
-    post = test_app.post('/slideshow/name/remove', data=data)
+    assert 'Delete' in test_app.get(
+        '/slideshow/name/delete').data.decode('utf8')
+    data = {'action': 'Delete'}
+    post = test_app.post('/slideshow/name/delete', data=data)
     assert post.status_code < 400
     assert test_app.get('/slideshow/name/').status_code == 404
 
 
-def test_remove_404(test_app):
-    assert test_app.get('/slideshow/unknown/remove').status_code == 404
-    data = {'action': 'Remove'}
-    post = test_app.post('/slideshow/unknown/remove', data=data)
+def test_add_delete_no_theme(test_app):
+    assert 'Add' in test_app.get('/slideshow/add').data.decode('utf8')
+    data = {'name': 'name', 'folder': 0}
+    post = test_app.post('/slideshow/add', data=data)
+    assert post.status_code < 400
+    assert 'name' in test_app.get('/slideshow/name/').data.decode('utf8')
+    assert 'Delete' in test_app.get(
+        '/slideshow/name/delete').data.decode('utf8')
+    data = {'action': 'Delete'}
+    post = test_app.post('/slideshow/name/delete', data=data)
+    assert post.status_code < 400
+    assert test_app.get('/slideshow/name/').status_code == 404
+
+
+def test_delete_404(test_app):
+    assert test_app.get('/slideshow/unknown/delete').status_code == 404
+    data = {'action': 'Delete'}
+    post = test_app.post('/slideshow/unknown/delete', data=data)
     assert post.status_code == 404
 
 
-def test_remove_cancel(test_app):
+def test_delete_cancel(test_app):
     data = {'action': 'Cancel'}
-    post = test_app.post('/slideshow/slideshow-1/remove', data=data)
+    post = test_app.post('/slideshow/slideshow-1/delete', data=data)
     assert post.status_code < 400
     html = test_app.get('/slideshow/slideshow-1/').data.decode('utf8')
     assert 'slideshow-1' in html
