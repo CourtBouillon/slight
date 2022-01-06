@@ -2,25 +2,38 @@
   background: transparent;
 }
 
-#actions ul {
+#bars {
   display: flex;
   left: 0;
-  list-style: none;
   padding: 0.5em;
   position: absolute;
   top: 0;
 }
 
-#actions a {
+#bars .hidden {
+  display: none;
+}
+
+#bars ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0.5em 2em 0.5em 0;
+}
+
+#bars a {
   color: inherit;
-  opacity: 0.1;
+  cursor: pointer;
+  display: block;
+  opacity: 0.2;
   padding: 0.5em;
   text-decoration: none;
   transition: opacity 0.5s;
+  width: 1em;
 }
 
-#actions a:hover,
-#actions a:focus {
+#bars a:hover,
+#bars a:focus {
   opacity: 1;
 }
 
@@ -48,6 +61,10 @@
 
 .reveal .controls:hover {
   opacity: 0.5;
+}
+
+.reveal section[contenteditable=true] {
+  outline: 3px dashed #0003;
 }
 
 @media weasyprint {

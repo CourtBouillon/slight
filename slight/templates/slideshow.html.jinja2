@@ -10,24 +10,39 @@
     <div class="reveal">
       <div class="slides">{{ slideshow | safe }}</div>
     </div>
-    <aside id="actions">
-      <ul>
+    <aside id="bars">
+      <ul id="actions">
         <li id="home"><a title="Home Page" href="{{ url_for('index') }}">&lt;</a></li>
         <li id="print"><a title="Print" href="{{ url_for('print_slideshow', name=name) }}">🖨</a></li>
+        <li id="edit"><a title="Edit" href="#">✒</a></li>
+      </ul>
+      <ul id="edition" class="hidden">
+        <li id="save"><a title="Save" href="#">🖫</a></li>
+        <li id="undo" data-command><a title="Undo" href="#">↶</a></li>
+        <li id="redo" data-command><a title="Redo" href="#">↷</a></li>
+        <li id="add"><a title="Add Slide" href="#">⊞</a></li>
+        <li id="remove"><a title="Remove Slide" href="#">⊟</a></li>
+      </ul>
+      <ul id="tags" class="hidden">
+        <li id="bold" data-command><a title="Bold" href="#">𝐁</a></li>
+        <li id="italic" data-command><a title="Italic" href="#">𝐼</a></li>
+        <li id="insertUnorderedList" data-command><a title="Unordered List" href="#">•</a></li>
+        <li id="insertOrderedList" data-command><a title="Ordered List" href="#">①</a></li>
+        <li id="h1" data-format><a title="Title 1" href="#">h1</a></li>
+        <li id="h2" data-format><a title="Title 2" href="#">h2</a></li>
+        <li id="h3" data-format><a title="Title 3" href="#">h3</a></li>
+        <li id="h4" data-format><a title="Title 4" href="#">h4</a></li>
+        <li id="h5" data-format><a title="Title 5" href="#">h5</a></li>
+        <li id="h6" data-format><a title="Title 6" href="#">h6</a></li>
+        <li id="p" data-format><a title="Paragraph" href="#">p</a></li>
+        <li id="blockquote" data-format><a title="Quote" href="#">’’</a></li>
+        <li id="superscript" data-command><a title="Superscript" href="#">¹</a></li>
+        <li id="subscript" data-command><a title="Subscript" href="#">₁</a></li>
       </ul>
     </aside>
     <script type="application/javascript" src="{{ url_for('static', filename='reveal.js/dist/reveal.js') }}"></script>
     <script type="application/javascript" src="{{ url_for('static', filename='reveal.js/plugin/highlight/highlight.js') }}"></script>
     <script type="application/javascript" src="{{ url_for('static', filename='reveal.js/plugin/notes/notes.js') }}"></script>
-    <script>
-      Reveal.initialize({
-        controls: true,
-        progress: true,
-        history: true,
-        center: true,
-        slideNumber: true,
-        plugins: [ RevealHighlight, RevealNotes ],
-      });
-    </script>
+    <script type="application/javascript" src="{{ url_for('static', filename='slideshow.js') }}"></script>
   </body>
 </html>

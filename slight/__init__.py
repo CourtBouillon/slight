@@ -1,11 +1,11 @@
 from os import getenv
 from pathlib import Path
 
-from flask import Flask, abort, render_template, send_from_directory, url_for
+from flask import (
+    Flask, abort, render_template, request, send_from_directory, url_for)
 from flask_weasyprint import HTML, render_pdf
 
-VERSION = __version__ = '0.0.0'
-
+__version__ = '0.0.0'
 app = Flask(__name__)
 
 
@@ -14,19 +14,28 @@ def index():
     return render_template('index.html.jinja2', slideshows=paths('slideshows'))
 
 
-@app.route('/view/<name>/')
+@app.route('/slideshow/<name>/')
 def slideshow(name):
     for root in paths('slideshows'):
         if root.name != name:
             continue
-        slideshow = (root / 'presentation.html').read_text()
+        slideshow = (root / 'slides.html').read_text()
         meta = (root / 'meta.html').read_text()
         return render_template(
             'slideshow.html.jinja2', slideshow=slideshow, meta=meta, name=name)
     return abort(404)
 
 
-@app.route('/view/<name>/static/<path:path>')
+@app.route('/slideshow/<name>/save', methods=('POST',))
+def save_slideshow(name):
+    for root in paths('slideshows'):
+        if root.name != name:
+            continue
+        (root / 'slides.html').write_text(request.form['sections'])
+        return 'OK'
+
+
+@app.route('/slideshow/<name>/static/<path:path>')
 def slideshow_static(name, path):
     return custom_static('slideshows', name, Path('static') / path)
 
@@ -36,7 +45,7 @@ def theme_static(name, path):
     return custom_static('themes', name, Path(path))
 
 
-@app.route('/pdf/<name>.pdf')
+@app.route('/slideshow/<name>.pdf')
 def print_slideshow(name):
     html = HTML(url_for('slideshow', name=name), media_type='weasyprint')
     return render_pdf(html)
