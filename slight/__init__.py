@@ -35,7 +35,6 @@ def add_slideshow():
     themes = tuple(paths('themes'))
     folders = app.config['slideshows']
     if request.method.lower() == 'post':
-        theme = themes[int(request.form['theme'])]
         folder = folders[int(request.form['folder'])]
         name = Path(request.form['name']).name
         html_name = escape(name)
@@ -43,10 +42,12 @@ def add_slideshow():
         slideshow_folder.mkdir()
         content = f'<section><h1>{html_name}</h1><p>Text</p></section>\n'
         (slideshow_folder / 'slides.html').write_text(content)
-        content = (
-            f'<title>{html_name}</title>\n'
-            '<link rel="stylesheet" '
-            f'href="/themes/{theme.name}/style.css" />\n')
+        content = f'<title>{html_name}</title>\n'
+        if 'theme' in request.form:
+            theme = themes[int(request.form['theme'])]
+            content += (
+                '<link rel="stylesheet" '
+                f'href="/themes/{theme.name}/style.css" />\n')
         (slideshow_folder / 'meta.html').write_text(content)
         return redirect(url_for('slideshow', name=name))
     return render_template(

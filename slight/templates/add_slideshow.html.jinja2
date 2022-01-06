@@ -22,14 +22,16 @@
           {% endfor %}
         </select>
       </label>
-      <label>
-        Theme
-        <select name="theme">
-          {% for theme in themes %}
-            <option value="{{ loop.index0 }}">{{ theme.name }}</option>
-          {% endfor %}
-        </select>
-      </label>
+      {% if themes %}
+        <label>
+          Theme
+          <select name="theme">
+            {% for theme in themes %}
+              <option value="{{ loop.index0 }}">{{ theme.name }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      {% endif %}
       <input type="submit" />
     </form>
   </body>
