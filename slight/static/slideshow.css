@@ -9,6 +9,10 @@
   to { opacity: 0.2; color: inherit }
 }
 
+html {
+  background: white;
+}
+
 .reveal-viewport {
   background: transparent;
 }
