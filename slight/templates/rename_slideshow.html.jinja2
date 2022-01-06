@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Slight</title>
+    <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    </head>
+  </head>
+
+  <body>
+    <h1>Rename Slideshow</h1>
+
+    <form method="post">
+      <label>
+        Name
+        <input required name="name" value="{{ name }}" />
+      </label>
+      <input type="submit" />
+    </form>
+  </body>
+</html>

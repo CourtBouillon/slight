@@ -15,6 +15,8 @@
         <li id="home"><a title="Home Page" href="{{ url_for('index') }}">&lt;</a></li>
         <li id="print"><a title="Print" href="{{ url_for('print_slideshow', name=name) }}">🖨</a></li>
         <li id="edit"><a title="Edit" href="#">✒</a></li>
+        <li id="rename"><a title="Rename" href="{{ url_for('rename_slideshow', name=name) }}">🏷</a></li>
+        <li id="remove"><a title="Remove" href="{{ url_for('remove_slideshow', name=name) }}">🗑</a></li>
       </ul>
       <ul id="edition" class="hidden">
         <li id="save"><a title="Save" href="#">🖫</a></li>

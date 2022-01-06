@@ -10,6 +10,16 @@
     <h1>Slight</h1>
 
     <ul id="slideshows">
+      <li>
+        <figure>
+          <svg viewBox="0 0 10 10">
+            <circle cx="5" cy="5" r="1.5" fill="#eee" />
+            <rect x="4.9" y="4" width="0.2" height="2" fill="#111" />
+            <rect x="4" y="4.9" width="2" height="0.2" fill="#111" />
+          </svg>
+          <figcaption><a href="{{ url_for('add_slideshow') }}">Add Presentation</a></figcaption>
+        </figure>
+      </li>
       {% for slideshow in (slideshows | sort) %}
         <li>
           <figure>

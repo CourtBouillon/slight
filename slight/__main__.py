@@ -1,7 +1,6 @@
 from argparse import ArgumentParser
 from pathlib import Path
 
-
 from . import __version__, app
 
 

@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Slight</title>
+    <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    </head>
+  </head>
+
+  <body>
+    <h1>Remove Slideshow</h1>
+
+    <p>Are you sure that you want to remove the "{{ name }}" slideshow?</p>
+    <form method="post">
+      <input type="submit" name="action" value="Cancel" />
+      <input type="submit" name="action" value="Remove" />
+    </form>
+  </body>
+</html>

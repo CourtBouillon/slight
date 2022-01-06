@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Slight</title>
+    <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    </head>
+  </head>
+
+  <body>
+    <h1>Add Slideshow</h1>
+
+    <form method="post">
+      <label>
+        Name
+        <input required name="name" />
+      </label>
+      <label>
+        Folder
+        <select name="folder">
+          {% for folder in folders %}
+            <option value="{{ loop.index0 }}">{{ folder.name }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>
+        Theme
+        <select name="theme">
+          {% for theme in themes %}
+            <option value="{{ loop.index0 }}">{{ theme.name }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <input type="submit" />
+    </form>
+  </body>
+</html>
