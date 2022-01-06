@@ -1,3 +1,14 @@
+@keyframes saving {
+  from { color: inherit }
+  to { color: orange }
+}
+
+@keyframes saved {
+  from { opacity: 1; color: green }
+  80% { opacity: 1; color: green }
+  to { opacity: 0.2; color: inherit }
+}
+
 .reveal-viewport {
   background: transparent;
 }
@@ -34,6 +45,20 @@
 
 #bars a:hover,
 #bars a:focus {
+  opacity: 1;
+}
+
+#save.saving a {
+  animation: 1s infinite alternate saving;
+  opacity: 1;
+}
+
+#save.saved a {
+  animation: 10s saved;
+}
+
+#save.error a {
+  color: red;
   opacity: 1;
 }
 

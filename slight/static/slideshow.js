@@ -29,7 +29,7 @@ document.querySelectorAll('[data-command] a').forEach(anchor => {
   });
 });
 
-document.querySelector('#add').addEventListener('click', event => {
+document.querySelector('#add a').addEventListener('click', event => {
   var section = document.createElement('section');
   section.setAttribute('contenteditable', 'true');
   section.innerHTML = '<h2>Title</h2><p>Content</p>';
@@ -40,7 +40,7 @@ document.querySelector('#add').addEventListener('click', event => {
   return false;
 });
 
-document.querySelector('#remove').addEventListener('click', event => {
+document.querySelector('#remove a').addEventListener('click', event => {
   if (Reveal.isLastSlide() && Reveal.isFirstSlide()) { return false }
   index = Reveal.getIndices().h - Reveal.isLastSlide();
   event.target = document.querySelector('section.present').remove();
@@ -49,10 +49,18 @@ document.querySelector('#remove').addEventListener('click', event => {
   return false;
 });
 
-document.querySelector('#save').addEventListener('click', event => {
+document.querySelector('#save a').addEventListener('click', event => {
   var sections = Array.from(document.querySelectorAll('section')).map(
-    section => '<section>' + section.innerHTML + '</section>').join('\n');
+    section => '<section>' + section.innerHTML + '</section>\n').join('');
+  event.target.parentNode.classList.remove('saved');
+  event.target.parentNode.classList.remove('error');
+  event.target.parentNode.classList.add('saving');
   var request = new XMLHttpRequest();
+  request.addEventListener('readystatechange', () => {
+    if (request.readyState === 4) {
+      event.target.parentNode.classList.replace('saving', request.status === 200 ? 'saved' : 'error');
+    }
+  });
   request.open('POST', 'save', true);
   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
   request.send('sections=' + encodeURIComponent(sections));
