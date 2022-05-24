@@ -2,22 +2,26 @@ body {
   background: #111;
   color: #eee;
   font-family: "Cantarell", sans;
-  text-align: center;
+  margin: 2em 1em;
 }
 
 h1 {
+  bottom: 1em;
   box-sizing: border-box;
   font-weight: 100;
-  font-size: 3em;
+  font-size: 4em;
   letter-spacing: -0.05em;
-  margin: 1em 0;
+  line-height: 1;
+  margin: 0;
+  opacity: 0.3;
+  position: fixed;
+  right: 1em;
   text-transform: lowercase;
 }
 
 #slideshows {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   list-style-type: none;
   padding: 0;
 }
@@ -35,10 +39,11 @@ figure:hover {
 
 figcaption {
   padding: 0.5em 0;
+  text-align: center;
   width: 100%;
 }
 
-figcaption a {
+#slideshows a {
   color: inherit;
   text-decoration: inherit;
 }
@@ -52,14 +57,18 @@ iframe, svg {
 }
 
 form {
-  display: inline-flex;
+  align-items: center;
+  display: flex;
   flex-direction: column;
-}
-
-label {
-  text-align: left;
+  height: 100%;
+  justify-content: center;
 }
 
 input, select {
-  margin: 0.5em 0;
+  background: #eee;
+  border: 0;
+  border-radius: 0.25em;
+  color: #111;
+  margin: 0.5em;
+  padding: 0.25em 0.5em;
 }
