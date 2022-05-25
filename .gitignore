@@ -1,5 +1,7 @@
 /.coverage
 /.pytest_cache
 /docs/_build
+/themes
+/slideshows
 /venv
 __pycache__

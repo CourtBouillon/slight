@@ -1,4 +1,4 @@
-slight is a lightweight slideshow editor, based on reveal.js.
+Slight is a lightweight online slideshow editor based on reveal.js.
 
 * Free software: BSD license
 * For Python 3.7+
@@ -10,7 +10,7 @@ slight is a lightweight slideshow editor, based on reveal.js.
 * Donation: https://opencollective.com/courtbouillon
 
 Copyrights are retained by their contributors, no copyright assignment is
-required to contribute to slight. Unless explicitly stated otherwise, any
+required to contribute to Slight. Unless explicitly stated otherwise, any
 contribution intentionally submitted for inclusion is licensed under the BSD
 3-clause license, without any additional terms or conditions. For full
 authorship information, see the version control history.
