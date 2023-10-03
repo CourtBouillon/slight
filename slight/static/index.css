@@ -20,15 +20,15 @@ h1 {
 }
 
 #slideshows {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fill, 18em);
   list-style-type: none;
   padding: 0;
 }
 
 figure {
-  margin: 1em;
-  max-width: 20em;
+  margin: 0;
   opacity: 0.3;
   transition: opacity 0.5s;
 }
