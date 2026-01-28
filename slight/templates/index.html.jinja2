@@ -23,12 +23,14 @@
         </a>
       </li>
       {% for slideshow in (slideshows | sort) %}
-        <li>
-          <figure>
-            <iframe src="{{ url_for('slideshow', name=slideshow.name) }}" loading="lazy"></iframe>
-            <figcaption><a href="{{ url_for('slideshow', name=slideshow.name) }}">{{ slideshow.name }}</a></figcaption>
-          </figure>
-        </li>
+        {% if (slideshow / 'slides.html').exists() %}
+          <li>
+            <figure>
+              <iframe src="{{ url_for('slideshow', name=slideshow.name) }}" loading="lazy"></iframe>
+              <figcaption><a href="{{ url_for('slideshow', name=slideshow.name) }}">{{ slideshow.name }}</a></figcaption>
+            </figure>
+          </li>
+        {% endif %}
       {% endfor %}
     </ul>
   </body>
